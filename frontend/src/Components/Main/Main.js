@@ -31,13 +31,13 @@ class Main extends Component {
 
     render(){
         return(
-            <div>
+            <div className='hero-image'>
                 {this.props.token.token !== undefined ?
                         <div>
                             <Link to='/home'>Home | </Link>
                             <Link to='/login' onClick={this.handleLogout}>logout</Link> 
                             <Redirect to='/home'/>
-
+                    
                         </div>  
                     : 
                         <Link to='/login'>Home | </Link>
