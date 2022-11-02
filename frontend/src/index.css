@@ -20,3 +20,41 @@ code {
   width: 100%;
   height: 100vh;
 }
+
+.navbar {
+  width: 100%;
+}
+
+/* Login Styling */
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.login-box {
+  padding: 4rem;
+  background-color: #DCFFF7;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sign-in {
+  font-family: Homenaje;
+  text-align: center;
+}
+
+.button-span {
+  padding-top: 20px;
+  display: flex;
+}
+
+.button-signin {
+  border-radius: 20px;
+  border-width: 1px;
+}
+
