@@ -70,3 +70,12 @@ code {
   border-radius: 20px;
   border-width: 1px;
 }
+
+/* Mobile Styling */
+
+@media only screen and (max-width: 768px) {
+  .hero-image{
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
