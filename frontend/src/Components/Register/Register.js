@@ -33,10 +33,11 @@ class Register extends Component{
 
     render(){
         return(
-            <div>
-                <h1>Create Account</h1>
+            <div className="register-container">
+            <div className="register-box">
+                <h1 className="create-account">Create Account</h1>
                 <label class="sr-only">Username</label>
-                <input
+                <input className="username-input"
                     type="text"
                     id="username"
                     name="username"
@@ -47,7 +48,7 @@ class Register extends Component{
                     required
                 />
                 <label class="sr-only">Password</label>
-                <input
+                <input className="password-input"
                     type="password"
                     id="password"
                     name="password"
@@ -57,7 +58,7 @@ class Register extends Component{
                     onChange={this.handleInputChange}
                     required
                 />
-                <input
+                <input className="confirm-password-input"
                     type="password"
                     id="password-confirm"
                     name="confirmPassword"
@@ -68,8 +69,9 @@ class Register extends Component{
                     required
                 />
                 <Link to="/login">Have an account?</Link>
-                <button type="submit" onClick={this.handleSubmit}>Sign in</button>
+                <button className="button-signin" type="submit" onClick={this.handleSubmit}>Sign in</button>
             </div>
+        </div>
         )
     }
 }

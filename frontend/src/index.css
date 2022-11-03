@@ -19,23 +19,31 @@ code {
   display: flex;
   width: 100%;
   height: 100vh;
+  flex-direction: column;
 }
 
 .navbar {
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  height: 90px;
+  background-color: #DCFFF7;
+  box-shadow: 5px black;
 }
 
-/* Login Styling */
+/*Login and Register Styling*/
 
-.login-container {
+.login-container, .register-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 100vh;
+  justify-self: center;
 }
 
-.login-box {
+.login-box, .register-box {
   padding: 4rem;
   background-color: #DCFFF7;
   border-radius: 20px;
@@ -43,7 +51,7 @@ code {
   flex-direction: column;
 }
 
-.sign-in {
+.sign-in, .create-account {
   font-family: Homenaje;
   text-align: center;
 }
@@ -57,4 +65,3 @@ code {
   border-radius: 20px;
   border-width: 1px;
 }
-
