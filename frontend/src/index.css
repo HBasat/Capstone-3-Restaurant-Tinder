@@ -36,6 +36,11 @@ code {
   font-family: Homenaje;
 }
 
+.title {
+  font-family: Homenaje;
+  color: #177784;
+}
+
 /*Login and Register Styling*/
 
 .login-container, .register-container {
@@ -46,6 +51,7 @@ code {
   width: 100%;
   height: 100vh;
   justify-self: center;
+  filter: drop-shadow(0px 4px 4px grey);
 }
 
 .login-box, .register-box {
@@ -59,6 +65,7 @@ code {
 .sign-in, .create-account {
   font-family: Homenaje;
   text-align: center;
+  color: #177784;
 }
 
 .button-span {
@@ -69,6 +76,31 @@ code {
 .button-signin {
   border-radius: 20px;
   border-width: 1px;
+}
+
+/* Home Page Styling */
+
+.zip-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90vh;
+  justify-self: center;
+  filter: drop-shadow(0px 4px 4px grey);
+}
+
+.zip-box {
+  padding: 4rem;
+  background-color: #DCFFF7;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#zipcode {
+  text-align: center;
 }
 
 /* Mobile Styling */

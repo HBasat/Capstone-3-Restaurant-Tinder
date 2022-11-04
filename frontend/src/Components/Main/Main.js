@@ -33,15 +33,17 @@ class Main extends Component {
         return(
             <div className='hero-image'>
                 {this.props.token.token !== undefined ?
-                        <div>
-                            <Link to='/home'>Home | </Link>
-                            <Link to='/login' onClick={this.handleLogout}>logout</Link> 
+                        <div className='navbar'>
+                            <Link classname='home' to='/home'>Home | </Link>
+                            <h1 className='title'>FoodMatch</h1>
+                            <Link classname='logout' to='/login' onClick={this.handleLogout}>logout</Link> 
                             <Redirect to='/home'/>
                     
                         </div>  
                     : 
                         <div className='navbar'>
                             <Link className='home-button' to='/login'>Home | </Link>
+                            <h1 className='title' >FoodMatch</h1>
                         </div>
                 }
                 <Switch>

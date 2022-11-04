@@ -34,42 +34,42 @@ class Register extends Component{
     render(){
         return(
             <div className="register-container">
-            <div className="register-box">
-                <h1 className="create-account">Create Account</h1>
-                <label class="sr-only">Username</label>
-                <input className="username-input"
-                    type="text"
-                    id="username"
-                    name="username"
-                    class="form-control"
-                    placeholder="Username"
-                    v-model="user.username"
-                    onChange={this.handleInputChange}
-                    required
-                />
-                <label class="sr-only">Password</label>
-                <input className="password-input"
-                    type="password"
-                    id="password"
-                    name="password"
-                    class="form-control"
-                    placeholder="Password"
-                    v-model="user.password"
-                    onChange={this.handleInputChange}
-                    required
-                />
-                <input className="confirm-password-input"
-                    type="password"
-                    id="password-confirm"
-                    name="confirmPassword"
-                    class="form-control"
-                    placeholder="Confirm Password"
-                    v-model="user.password"
-                    onChange={this.handleInputChange}
-                    required
-                />
+                <div className="register-box">
+                    <h1 className="create-account">Create Account</h1>
+                    <label class="sr-only">Username</label>
+                    <input className="username-input"
+                        type="text"
+                        id="username"
+                        name="username"
+                        class="form-control"
+                        placeholder="Username"
+                        v-model="user.username"
+                        onChange={this.handleInputChange}
+                        required
+                    />
+                    <label class="sr-only">Password</label>
+                    <input className="password-input"
+                        type="password"
+                        id="password"
+                        name="password"
+                        class="form-control"
+                        placeholder="Password"
+                        v-model="user.password"
+                        onChange={this.handleInputChange}
+                        required
+                    />
+                    <input className="confirm-password-input"
+                        type="password"
+                        id="password-confirm"
+                        name="confirmPassword"
+                        class="form-control"
+                        placeholder="Confirm Password"
+                        v-model="user.password"
+                        onChange={this.handleInputChange}
+                        required
+                    />
                 <Link to="/login">Have an account?</Link>
-                <button className="button-signin" type="submit" onClick={this.handleSubmit}>Sign in</button>
+                <button className="button-signin" type="submit" onClick={this.handleSubmit}>Create Account</button>
             </div>
         </div>
         )
