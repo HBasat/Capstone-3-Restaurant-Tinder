@@ -9,7 +9,7 @@ import com.techelevator.dao.RestaurantDao;
 import java.util.List;
 
 @CrossOrigin
-@RequestMapping("/resturant")
+@RequestMapping("/restaurant")
 @RestController
 public class RestaurantController {
 

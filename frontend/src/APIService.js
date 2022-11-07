@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-/* fill in url once getallbooks is made in controller */
-const GET_ALL_RESTAURANTS_URL = ""
+const GET_ALL_RESTAURANTS_URL = 'http://localhost:8081/restaurant'
 
 export default function APIService() {
 
