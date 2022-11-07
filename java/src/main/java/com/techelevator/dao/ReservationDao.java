@@ -7,4 +7,6 @@ import com.techelevator.model.Reservation;
 public interface ReservationDao {
 
     public Reservation getReservationId(int reservationId);
+
+
 }

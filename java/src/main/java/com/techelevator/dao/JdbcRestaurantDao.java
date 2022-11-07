@@ -1,9 +1,10 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Restaurant;
 import org.springframework.stereotype.Service;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.jdbc.core.JdbcTemplate;
-import com.techelevator.model.Restaurant;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -16,20 +17,20 @@ public class JdbcRestaurantDao implements RestaurantDao{
 
     @Override
     public Restaurant getRestaurantById(int restaurantId) {
-        Restaurant restaurant = null;
-        String sql = "SELECT * FROM restaurant WHERE restaurant_id = ?;";
+        Restaurant resturant = null;
+        String sql = "SELECT * FROM resturant WHERE resturant_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, restaurantId);
         while(results.next()){
-            restaurant = mapRowToRestaurant(results);
+            resturant = mapRowToRestaurant(results);
         }
 
-        return restaurant;
+        return resturant;
     }
 
     @Override
     public List<Restaurant> getAllRestaurant() {
         List<Restaurant> restaurants = new ArrayList<>();
-        String sql = "SELECT * FROM restaurant;";
+        String sql = "SELECT * FROM resturant;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()){
             Restaurant restaurant = mapRowToRestaurant(results);
@@ -39,10 +40,24 @@ public class JdbcRestaurantDao implements RestaurantDao{
         return restaurants;
     }
 
-    private Restaurant mapRowToRestaurant(SqlRowSet rowSet){
-        Restaurant restaurant = new Restaurant();
-        restaurant.setRestaurantID(rowSet.getInt("restaurant_id"));
-        restaurant.setRestaurantName(rowSet.getString("restaurant_name"));
+    @Override
+    public Restaurant getRestaurantByName(String restaurantName) {
+        Restaurant restaurant = null;
+        String sql = "SELECT * FROM resturant WHERE resturant_name = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, restaurantName);
+        while(results.next()){
+            restaurant = mapRowToRestaurant(results);
+        }
         return restaurant;
     }
+
+
+    private Restaurant mapRowToRestaurant(SqlRowSet rowSet){
+        Restaurant restaurant = new Restaurant();
+        restaurant.setRestaurantID(rowSet.getInt("resturant_id"));
+        restaurant.setRestaurantName(rowSet.getString("resturant_name"));
+        return restaurant;
+    }
+
+
 }

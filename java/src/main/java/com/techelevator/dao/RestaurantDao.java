@@ -10,4 +10,6 @@ public interface RestaurantDao {
 
     public Restaurant getRestaurantById(int restaurantId);
 
+    public Restaurant getRestaurantByName(String restaurantName);
+
 }
