@@ -16,7 +16,7 @@ public class RestaurantController {
 @Autowired
     private RestaurantDao restaurantDao;
 
-public RestaurantController(RestaurantDao restaurant){this.restaurantDao = restaurant;}
+    public RestaurantController(RestaurantDao restaurant){this.restaurantDao = restaurant;}
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Restaurant> restaurants(){return restaurantDao.getAllRestaurant();}
@@ -30,6 +30,10 @@ public RestaurantController(RestaurantDao restaurant){this.restaurantDao = resta
     public Restaurant getRestaurantByName(@PathVariable String name){
     return restaurantDao.getRestaurantByName(name);
     }
+
+    @CrossOrigin
+    @RequestMapping(path = "/zipcode/{zipcode}", method = RequestMethod.GET)
+    public List<Restaurant> getRestaurantByZip(@PathVariable("zipcode") String zip) { return restaurantDao.getRestaurantByZip(zip); }
 
 
 

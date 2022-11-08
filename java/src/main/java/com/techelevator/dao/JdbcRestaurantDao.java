@@ -51,11 +51,24 @@ public class JdbcRestaurantDao implements RestaurantDao{
         return restaurant;
     }
 
+    @Override
+    public List<Restaurant> getRestaurantByZip(String restaurantZip) {
+        List<Restaurant> restaurants = new ArrayList<>();
+        String sql = "SELECT * FROM resturant WHERE zipcode = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, restaurantZip);
+        while(results.next()){
+            Restaurant restaurant = mapRowToRestaurant(results);
+            restaurants.add(restaurant);
+        }
+        return restaurants;
+    }
+
 
     private Restaurant mapRowToRestaurant(SqlRowSet rowSet){
         Restaurant restaurant = new Restaurant();
         restaurant.setRestaurantID(rowSet.getInt("resturant_id"));
         restaurant.setRestaurantName(rowSet.getString("resturant_name"));
+        restaurant.setRestaurantZip(rowSet.getString("zipcode"));
         return restaurant;
     }
 

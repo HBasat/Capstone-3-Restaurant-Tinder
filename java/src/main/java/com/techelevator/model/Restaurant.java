@@ -4,6 +4,8 @@ public class Restaurant {
 
     private int restaurantID;
 
+    private String restaurantZip;
+
     private String restaurantName;
 
     public int getRestaurantID() {
@@ -20,5 +22,13 @@ public class Restaurant {
 
     public void setRestaurantName(String restaurantName) {
         this.restaurantName = restaurantName;
+    }
+
+    public String getRestaurantZip() {
+        return restaurantZip;
+    }
+
+    public void setRestaurantZip(String restaurantZip) {
+        this.restaurantZip = restaurantZip;
     }
 }

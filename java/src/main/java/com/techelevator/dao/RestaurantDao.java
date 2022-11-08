@@ -12,4 +12,6 @@ public interface RestaurantDao {
 
     public Restaurant getRestaurantByName(String restaurantName);
 
+    public List <Restaurant> getRestaurantByZip(String restaurantZip);
+
 }

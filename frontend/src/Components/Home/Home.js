@@ -1,28 +1,41 @@
 import {Link} from 'react-router-dom'
 import React from 'react'
 import {getAllRestaurants, getAllRestaurants_Test} from '../../APIService'
+import axios from 'axios'
+import { func } from 'prop-types'
 
 function Home(props) {
 
     const[zip, setZip] = React.useState("")
     const[restaurants, setRestaurants] = React.useState([])
 
+    const GET_ZIP_RESTAURANTS_URL = `http://localhost:8081/restaurant/zipcode/${zip}`
+
+    function getZipRestaurants() {
+        return axios.get(GET_ZIP_RESTAURANTS_URL)
+    }
+
     function handleChange(event) {
         setZip(event.target.value)
     }
 
     function handleClick() {
-        /* run getRestaurants, load them into an array, search the objects (filter method?) for a */ 
-        /* string that matches the current zip state, return all matches into a new array, use that data to map restaurant cards */
-        
-        getAllRestaurants_Test().then((data) => {
+
+        getZipRestaurants().then((data) => {
             setRestaurants({ restaurants: data })
             console.log(restaurants)
-            // console.log(data)
         })
-        .catch(function(ex) {
-            console.log('Response parsing failed. Error', ex)
-        })
+        
+        
+        // getAllRestaurants().then((data) => {
+
+        //     setRestaurants({ restaurants: data })
+        //     console.log(restaurants)
+        //     // console.log(data)
+        // })
+        // .catch(function(ex) {
+        //     console.log('Response parsing failed. Error', ex)
+        // })
     }
 
     // const restaurantMatches = restaurants.map((restaurants) => {
