@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
 import React from 'react'
-import APIService from '../../APIService'
+import {getAllRestaurants, getAllRestaurants_Test} from '../../APIService'
 
 function Home(props) {
 
@@ -15,20 +15,21 @@ function Home(props) {
         /* run getRestaurants, load them into an array, search the objects (filter method?) for a */ 
         /* string that matches the current zip state, return all matches into a new array, use that data to map restaurant cards */
         
-        APIService.getAllRestaurants().then((data) => {
-            this.setRestaurants({ restaurants: data })
-            console.log(this.restaurants.data)
+        getAllRestaurants_Test().then((data) => {
+            setRestaurants({ restaurants: data })
+            console.log(restaurants)
+            // console.log(data)
         })
         .catch(function(ex) {
-            console.log('Response parsing failed. Error', ex);
-        });;
+            console.log('Response parsing failed. Error', ex)
+        })
     }
 
-    const restaurantMatches = restaurants.map((restaurants) => {
-        <div>
+    // const restaurantMatches = restaurants.map((restaurants) => {
+    //     <div>
             
-        </div>
-    })
+    //     </div>
+    // })
 
     /* once handleClick is functional, make the const map of cards up here then render it to the DOM below in the return */
     return(
