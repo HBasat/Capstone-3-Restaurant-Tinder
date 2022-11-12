@@ -1,6 +1,5 @@
 import {Link} from 'react-router-dom'
 import React from 'react'
-import {getAllRestaurants, getAllRestaurants_Test} from '../../APIService'
 import axios from 'axios'
 import { func } from 'prop-types'
 
@@ -25,24 +24,25 @@ function Home(props) {
             setRestaurants({ restaurants: data })
             console.log(restaurants)
         })
-        
-        
-        // getAllRestaurants().then((data) => {
 
+        // getZipRestaurants().then((data) => {
         //     setRestaurants({ restaurants: data })
         //     console.log(restaurants)
-        //     // console.log(data)
-        // })
-        // .catch(function(ex) {
-        //     console.log('Response parsing failed. Error', ex)
         // })
     }
 
-    // const restaurantMatches = restaurants.map((restaurants) => {
-    //     <div>
-            
-    //     </div>
-    // })
+    
+    const restaurantMatches = restaurants.map((restaurant) => 
+        <div className='all-restaurants'>
+            <div className='restaurant-card'>
+                <img className='restaurant-img' alt='Restaurant Photo' src={restaurant.r_image} />
+                <p className='restaurant-name' >{restaurant.restaurant.name}</p>
+                <p className='restaurant-type' >{restaurant.r_type}</p>
+                <p className='restaurant-address' >{restaurant.r_city}, {restaurant.r_state}</p>
+                <p className='restaurant-rating' >{restaurant.r_rating}</p>
+            </div>
+        </div>
+    )
 
     /* once handleClick is functional, make the const map of cards up here then render it to the DOM below in the return */
     return(
@@ -68,7 +68,7 @@ function Home(props) {
                 </div>
             </div>
             <div>
-                {}
+                {restaurantMatches}
             </div>
         </div>
     )

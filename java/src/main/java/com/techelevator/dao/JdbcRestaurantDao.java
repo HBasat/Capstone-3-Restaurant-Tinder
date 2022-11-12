@@ -54,7 +54,7 @@ public class JdbcRestaurantDao implements RestaurantDao{
     @Override
     public List<Restaurant> getRestaurantByZip(String restaurantZip) {
         List<Restaurant> restaurants = new ArrayList<>();
-        String sql = "SELECT * FROM resturant WHERE zipcode = ?;";
+        String sql = "SELECT * FROM resturant WHERE r_zipcode = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, restaurantZip);
         while(results.next()){
             Restaurant restaurant = mapRowToRestaurant(results);
@@ -68,9 +68,19 @@ public class JdbcRestaurantDao implements RestaurantDao{
         Restaurant restaurant = new Restaurant();
         restaurant.setRestaurantID(rowSet.getInt("resturant_id"));
         restaurant.setRestaurantName(rowSet.getString("resturant_name"));
-        restaurant.setRestaurantZip(rowSet.getString("zipcode"));
+        restaurant.setRestaurantZip(rowSet.getString("r_zipcode"));
+        restaurant.setRestaurantAddress(rowSet.getString("r_address"));
+        restaurant.setRestaurantCity(rowSet.getString("r_city"));
+        restaurant.setRestaurantState(rowSet.getString("r_state"));
+        restaurant.setRestaurantTeleNumber(rowSet.getString("r_telephone"));
+        restaurant.setRestaurantImgUrl(rowSet.getString("r_image"));
+        restaurant.setRestaurantTakeout(rowSet.getBoolean("r_takeout"));
+        restaurant.setRestaurantDelivery(rowSet.getBoolean("r_delivery"));
         return restaurant;
     }
 
+
+    //add all object items into the model and mapRowToRestaurant
+    //if not working, try making a getBy function (add to Dao as well)
 
 }
