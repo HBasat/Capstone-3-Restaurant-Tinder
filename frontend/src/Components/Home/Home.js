@@ -7,39 +7,48 @@ function Home(props) {
 
     const[zip, setZip] = React.useState("")
     const[restaurants, setRestaurants] = React.useState([])
+    
+    
+
+    React.useEffect(() => {
+        console.log("Effect log")
+        console.log(zip)
+        console.log(restaurants)
+        axios.get(GET_ZIP_RESTAURANTS_URL)
+            .then(data => setRestaurants(data))
+            .catch(error => console.log(error))
+    }, [zip])
 
     const GET_ZIP_RESTAURANTS_URL = `http://localhost:8081/restaurant/zipcode/${zip}`
 
-    function getZipRestaurants() {
-        return axios.get(GET_ZIP_RESTAURANTS_URL)
-    }
-
     function handleChange(event) {
+        console.log("Handle Change Log")
         setZip(event.target.value)
+        
     }
 
-    function handleClick() {
+    function handleClick(event) {
+        console.log("Handle Click log")
+        event.preventDefault();
 
-        getZipRestaurants().then((data) => {
-            setRestaurants({ restaurants: data })
-            console.log(restaurants)
-        })
-
-        // getZipRestaurants().then((data) => {
-        //     setRestaurants({ restaurants: data })
+        // getZipRestaurants().then((response) => {
+        //     setRestaurants({ restaurants: response.data })
         //     console.log(restaurants)
         // })
     }
 
-    
-    const restaurantMatches = restaurants.map((restaurant) => 
+    // function handleSubmit(event) {
+    //     event.preventDefault()
+    // }
+
+    console.log(restaurants.data)
+    console.log(Array.isArray(restaurants.data))
+    const restaurantMatches = Array.isArray(restaurants.data) && restaurants.data.map((restaurant) => 
         <div className='all-restaurants'>
             <div className='restaurant-card'>
-                <img className='restaurant-img' alt='Restaurant Photo' src={restaurant.r_image} />
-                <p className='restaurant-name' >{restaurant.restaurant.name}</p>
-                <p className='restaurant-type' >{restaurant.r_type}</p>
-                <p className='restaurant-address' >{restaurant.r_city}, {restaurant.r_state}</p>
-                <p className='restaurant-rating' >{restaurant.r_rating}</p>
+                <img className='restaurant-img' alt='Restaurant Photo' src={restaurant.restaurantImgUrl} />
+                <p className='restaurant-name' >{restaurant.restaurantName}</p>
+                <p className='restaurant-address' >{restaurant.restaurantCity}, {restaurant.restaurantState}</p>
             </div>
         </div>
     )
@@ -49,22 +58,24 @@ function Home(props) {
         <div>
             <div className='zip-container'>
                 <div className='zip-box' >
-                    <h2>Find restaurants near you!</h2>
-                    <input
-                        type="text"
-                        id="zipcode"
-                        name="zipcode"
-                        class="form"
-                        placeholder="Enter Zip"
-                        onChange={handleChange}
-                    />
-                    <button
-                        type='submit'
-                        className='zip-button'
-                        onClick={handleClick}
-                    > 
-                        Submit
-                    </button>
+                    <form onSubmit={handleClick}>
+                        <h2>Find restaurants near you!</h2>
+                        <input
+                            type="text"
+                            id="zipcode"
+                            name="zipcode"
+                            class="form"
+                            placeholder="Enter Zip"
+                            onChange={handleChange}
+                        />
+                        <button
+                            type='submit'
+                            value="Submit"
+                            className='zip-button'
+                        > 
+                            Submit
+                        </button>
+                    </form>  
                 </div>
             </div>
             <div>
@@ -75,3 +86,6 @@ function Home(props) {
 }
 
 export default Home;
+
+//how to add a controlled form to a functional react component
+//how to grab an array from a json body of an axios get request
