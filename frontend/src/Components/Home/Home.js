@@ -49,6 +49,7 @@ function Home(props) {
                 <img className='restaurant-img' alt='Restaurant Photo' src={restaurant.restaurantImgUrl} />
                 <p className='restaurant-name' >{restaurant.restaurantName}</p>
                 <p className='restaurant-address' >{restaurant.restaurantCity}, {restaurant.restaurantState}</p>
+                <p>{restaurant.restaurantTeleNumber}</p>
             </div>
         </div>
     )

@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 public class RestaurantController {
 
-@Autowired
+    @Autowired
     private RestaurantDao restaurantDao;
 
     public RestaurantController(RestaurantDao restaurant){this.restaurantDao = restaurant;}
