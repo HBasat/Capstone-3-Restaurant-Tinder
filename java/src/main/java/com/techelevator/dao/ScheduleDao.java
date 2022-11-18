@@ -8,4 +8,6 @@ public interface ScheduleDao {
 
     public List <Schedule> getScheduleByRestId(int restaurantScheduleID);
 
+    public List<Schedule> getScheduleByRestIds(List <Integer> restaurantScheduleIDs);
+
 }

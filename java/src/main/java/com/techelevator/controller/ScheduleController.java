@@ -20,4 +20,8 @@ public class ScheduleController {
 
     @RequestMapping(path = "/{sr_id}",method = RequestMethod.GET)
     public List<Schedule> getScheduleByRestId(@PathVariable("sr_id") int restId){return scheduleDao.getScheduleByRestId(restId);}
+
+    @RequestMapping(path = "/byIds/{sr_id}",method = RequestMethod.GET)
+    public List<Schedule> getScheduleByRestIds(@PathVariable("sr_id") List <Integer> restIds){return scheduleDao.getScheduleByRestIds(restIds);}
 }
+
