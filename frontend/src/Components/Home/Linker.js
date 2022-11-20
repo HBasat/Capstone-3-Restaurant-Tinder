@@ -2,6 +2,7 @@ import {Link} from 'react-router-dom'
 import React from 'react'
 import axios from 'axios'
 import Home from './Home'
+import RestaurantPost from './RestaurantPost'
 
 export default function Linker({inviteeArray}){
 
@@ -40,7 +41,7 @@ export default function Linker({inviteeArray}){
     )
 
     const newArray = JSON.parse(localStorage.getItem("inviteeTest"))
-    const reservationDate = JSON.parse(localStorage.getItem("dateTest"))
+    // const reservationDate = JSON.parse(localStorage.getItem("dateTest"))
     localStorage.setItem("restaurantArrayTest", JSON.stringify(restaurants.data))
 
     const GET_INVITEE_URL = 'http://localhost:8081/invite/'
@@ -54,16 +55,6 @@ export default function Linker({inviteeArray}){
         }
         return result;
     }
-
-    // axios 
-    //     .post("https://localhost/8081/invite/", {
-    //         reservation_random_id: "",
-    //         reservation_expiration_date: reservationDate
-    //     })
-    //     .then((response) => displayOutput(response))
-    //     .catch((err) => console.log(err));
-
-
 
     return (
         <div>
@@ -88,8 +79,8 @@ export default function Linker({inviteeArray}){
                     </button>
                     {!isClicked && <div>
                         {newArray.map((invitee) => 
-                        <p>{invitee.invitee}: {GET_INVITEE_URL}{makeid(5)}</p>
-                        )}
+                        <RestaurantPost invitee={invitee}/>
+                        )} 
                     </div>}
                 </div>
             </div>
