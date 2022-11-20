@@ -17,7 +17,7 @@ export default function RestaurantPost(props){
     React.useEffect(() => {
     console.log(randomId)
     console.log(reservationDate)
-    axios.post("https://localhost/8081/invite", {
+    axios.post("http://localhost:8081/invite", {
         reservation_random_id: randomId,
         reservation_expiration_date: reservationDate
     })

@@ -21,12 +21,12 @@ public class RestaurantController {
     @RequestMapping(method = RequestMethod.GET)
     public List<Restaurant> restaurants(){return restaurantDao.getAllRestaurant();}
 
-    @RequestMapping(path = "/{resturant_id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/id/{resturant_id}", method = RequestMethod.GET)
     public Restaurant getRestaurantById(@PathVariable int id){
         return restaurantDao.getRestaurantById(id);
     }
 
-    @RequestMapping(path = "/{resturant_name}", method = RequestMethod.GET)
+    @RequestMapping(path = "/name/{resturant_name}", method = RequestMethod.GET)
     public Restaurant getRestaurantByName(@PathVariable String name){
     return restaurantDao.getRestaurantByName(name);
     }
