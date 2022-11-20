@@ -18,7 +18,7 @@ export default function Linker({inviteeArray}){
             .catch(error => console.log(error))
     }, [zip])
 
-    const GET_ZIP_RESTAURANTS_URL = 'http://localhost:8081/restaurant/zipcode/${zip}'
+    const GET_ZIP_RESTAURANTS_URL = `http://localhost:8081/restaurant/zipcode/${zip}`
 
     function handleChange(event) {
         console.log("Handle Change Log")
@@ -28,10 +28,6 @@ export default function Linker({inviteeArray}){
     function toggleClicked(){
         setIsClicked(prevIsClicked => !prevIsClicked)
     }
-
-    function generateRandomNumber() {
-        return Math.floor(Math.random() * Math.floor());
-      }
 
     const restaurantMatches = Array.isArray(restaurants.data) && restaurants.data.map((restaurant) => 
     <div className='all-restaurants'>
@@ -43,13 +39,31 @@ export default function Linker({inviteeArray}){
     </div>
     )
 
-    const inviteeLinks = Array.isArray(inviteeArray) && inviteeArray.map((invitee) => 
-      <div>
-        <div>
-            <p>test</p>
-        </div>
-      </div>
-    )
+    const newArray = JSON.parse(localStorage.getItem("inviteeTest"))
+    const reservationDate = JSON.parse(localStorage.getItem("dateTest"))
+    localStorage.setItem("restaurantArrayTest", JSON.stringify(restaurants.data))
+
+    const GET_INVITEE_URL = 'http://localhost:8081/invite/'
+
+    function makeid(length) {
+        var result           = '';
+        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+
+    // axios 
+    //     .post("https://localhost/8081/invite/", {
+    //         reservation_random_id: "",
+    //         reservation_expiration_date: reservationDate
+    //     })
+    //     .then((response) => displayOutput(response))
+    //     .catch((err) => console.log(err));
+
+
 
     return (
         <div>
@@ -72,9 +86,14 @@ export default function Linker({inviteeArray}){
                     >
                         Submit
                     </button>
-                    {!isClicked && {inviteeLinks}}
+                    {!isClicked && <div>
+                        {newArray.map((invitee) => 
+                        <p>{invitee.invitee}: {GET_INVITEE_URL}{makeid(5)}</p>
+                        )}
+                    </div>}
                 </div>
             </div>
+            <p><Link to="./Invite">Go to Invite Page</Link></p>
             <div>
             {restaurantMatches}
             </div>

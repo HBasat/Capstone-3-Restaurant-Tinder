@@ -3,8 +3,6 @@ package com.techelevator.dao;
 import org.springframework.stereotype.Service;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.jdbc.core.JdbcTemplate;
-
-import java.util.List;
 import com.techelevator.model.Reservation;
 
 
@@ -28,10 +26,45 @@ public class JdbcReservationDao implements ReservationDao{
         return reservation;
     }
 
+    @Override
+    public Reservation getRandomId(int randomId) {
+        Reservation reservation = null;
+        String sql = "SELECT * FROM reservation WHERE reservation_random_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, randomId);
+        while (results.next()){
+            reservation = mapRowToReservation(results);
+        }
+
+        return reservation;
+    }
+
+    @Override
+    public Reservation getExpirationDateByRandomId(String expirationDate) {
+        Reservation reservation = null;
+        String sql = "SELECT reservation_expiration_date FROM reservation WHERE reservation_random_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, expirationDate);
+        while (results.next()){
+            reservation = mapRowToReservation(results);
+        }
+
+        return reservation;
+    }
+
+    @Override
+    public Reservation postInviteeInfo(String reservationRandomId, String expirationDate) {
+        Reservation reservation = null;
+        String sql = "INSERT INTO reservation (reservation_random_id, reservation_expiration_date) VALUES (?, ?) RETURNING reservation_id";
+        int reservationId = jdbcTemplate.queryForObject(sql, Integer.class, reservation.getRandomId(), reservation.getExpirationDate());
+        return reservation;
+    }
+
+//    String reservationRandomId, String expirationDate
 
     private Reservation mapRowToReservation(SqlRowSet rowSet){
         Reservation reservation = new Reservation();
         reservation.setReservationId(rowSet.getInt("reservation_id"));
+        reservation.setRandomId(rowSet.getString("reservation_random_id"));
+        reservation.setExpirationDate(rowSet.getString("reservation_expiration_date"));
         return reservation;
     }
 }

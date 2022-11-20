@@ -8,6 +8,7 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import Linker from "../Home/Linker"
 import React from 'react'
+import Invite from "../Home/Invite"
 
 const mapStateToProps = state => {
     return {
@@ -53,6 +54,7 @@ class Main extends Component {
                     <Route path='/register'component={() => <Register/>}/>
                     <Route path='/home' component={this.props.token.token !== undefined ? () => <Home/> : null}/>
                     <Route path='/Linker' component={() => <Linker />}/>
+                    <Route path='/Invite' component={() => <Invite />}/>
                     <Redirect to='/login'/>
                 </Switch>
             </div>

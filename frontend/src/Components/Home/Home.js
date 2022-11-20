@@ -14,7 +14,10 @@ function Home(props) {
 
     const[invitee, setInvitee] = React.useState("")
     const[inviteeArray, setInviteeArray] = React.useState([])
+
     const[isClicked, setIsClicked] = React.useState(false)
+    const[date, setDate] = React.useState("")
+
 
     const GET_ZIP_RESTAURANTS_URL = `http://localhost:8081/restaurant/zipcode/${zip}`
 
@@ -33,10 +36,8 @@ function Home(props) {
     }, [zip])
 
     React.useEffect(() => {
-        console.log("test")
         console.log(restaurants)
         console.log(Array.isArray(restaurants.data) && restaurants.data.map(item => item.restaurantID).join(','))
-        // setRestaurantIDs(Array.isArray(restaurants.data) && restaurants.data.map(item => item.restaurantID).join(','))
         axios.get(GET_RESTAURANT_SCHEDULE)
             .then(data => setRestSchedule(data))
             .catch(error => console.log(error))
@@ -65,9 +66,16 @@ function Home(props) {
         setInviteeArray(prevInviteeArray => [...prevInviteeArray, {invitee: invitee}])
     }
 
+    function handleDate(event){
+        setDate(event.target.value)
+    }
+
+    localStorage.setItem("inviteeTest", JSON.stringify(inviteeArray))
+    localStorage.setItem("dateTest", JSON.stringify(date))
+
     console.log("Start log")
     console.log(restSchedule)
-    
+    console.log(today)
     console.log(restaurants.data)
     console.log(Array.isArray(restaurants.data))
     const restaurantMatches = Array.isArray(restaurants.data) && restaurants.data.map((restaurant) => 
@@ -79,9 +87,20 @@ function Home(props) {
                 {restaurant.restaurantTeleNumber && 
                     <p>Click to Order</p>
                 }
-                {/* {(weekday[today.getDay()] == JSON.stringify(restSchedule.data.s_day)) ? <p>Open</p> : <p>Closed</p>
-                    //Probably also stringify the json data to compare.
-                } */}
+                {Array.isArray(restSchedule.data) && 
+                    restSchedule.data
+                    .filter(schedule => schedule.scheduleDay === weekday[today.getDay()] && schedule.restaurantScheduleID == restaurant.restaurantID)
+                    .map((schedule) => {
+                    console.log(weekday[today.getDay()])
+                    console.log(schedule.scheduleDay)
+                    if(weekday[today.getDay()] === schedule.scheduleDay) {
+                        {console.log("open")}
+                        return <p>Open</p>
+                    } else {
+                        {console.log("closed")}
+                        return <p>Closed</p>
+                    }
+                })}
             </div>
         </div>
     )
@@ -114,6 +133,7 @@ function Home(props) {
                         {isClicked && <input 
                             type="date"
                             name="date"
+                            onChange={handleDate}
                         />}
                         {isClicked && <button><Link inviteeArray={inviteeArray} to="./Linker">Done</Link></button>}
                         {!isClicked && <button
@@ -126,8 +146,10 @@ function Home(props) {
                     </form>  
                 </div>
             </div>
-            {isClicked && <h3>Guest List</h3>}
-            {isClicked && <ul>{inviteeArray.map(invitee => (<li>{invitee.invitee}</li>))}</ul>}
+            <div className="guest-list">
+                {isClicked && <h3 className="guest-title">Guest List</h3>}
+                {isClicked && <ul className="invitee-list">{inviteeArray.map(invitee => (<li key={invitee.invitee} className="invitee">{invitee.invitee}</li>))}</ul>}
+            </div>
             <div>
                 {restaurantMatches}
             </div>

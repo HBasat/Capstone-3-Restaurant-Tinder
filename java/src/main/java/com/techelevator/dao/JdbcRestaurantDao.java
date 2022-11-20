@@ -63,7 +63,6 @@ public class JdbcRestaurantDao implements RestaurantDao{
         return restaurants;
     }
 
-
     private Restaurant mapRowToRestaurant(SqlRowSet rowSet){
         Restaurant restaurant = new Restaurant();
         restaurant.setRestaurantID(rowSet.getInt("resturant_id"));

@@ -103,6 +103,47 @@ code {
   text-align: center;
 }
 
+/* Restraunt Styling */
+.all-restaurants{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  overflow-x: auto;
+}
+
+.restaurant-img{
+  height: 100px;
+  width: 250px;
+}
+
+.restaurant-card{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #DCFFF7;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Guest List Styling */
+.guest-list{
+  background-color: #DCFFF7;
+}
+
+.guest-title{
+  text-decoration: underline;
+  width: 25%;
+}
+
+/* .invitee-list{
+
+} */
+
+.invitee{
+  list-style: none;
+  text-align: center;
+}
+
 /* Mobile Styling */
 
 @media only screen and (max-width: 768px) {
@@ -111,3 +152,4 @@ code {
     background-size: cover;
   }
 }
+
