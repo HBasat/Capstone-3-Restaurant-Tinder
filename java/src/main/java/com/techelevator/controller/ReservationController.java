@@ -20,9 +20,34 @@ public class ReservationController {
 
     public ReservationController(ReservationDao reservation){this.reservationDao = reservation;}
 
-    @RequestMapping(path = "", method = RequestMethod.POST)
-        public Reservation postInviteeInfo(@RequestParam ("reservation_expiration_date") String expirationDate, @RequestParam("reservation_random_id") String randomId) {
-        return reservationDao.postInviteeInfo(randomId, expirationDate);
-    }
+//    @RequestMapping(path = "", method = RequestMethod.POST)
+//        public Reservation postInviteeInfo(@RequestParam ("reservation_expiration_date") String expirationDate, @RequestParam("reservation_random_id") String randomId) {
+//        return reservationDao.postInviteeInfo(randomId, expirationDate);
+//    }
 
+
+    @RequestMapping(path = "", method = RequestMethod.POST)
+    public Reservation postInviteeInfo(@RequestBody InviteeDTO dto) {
+        return reservationDao.postInviteeInfo(dto.getReservation_random_id(), dto.getReservation_expiration_date());
+    }
+    public static class InviteeDTO{
+        public String getReservation_expiration_date() {
+            return reservation_expiration_date;
+        }
+
+        public void setReservation_expiration_date(String reservation_expiration_date) {
+            this.reservation_expiration_date = reservation_expiration_date;
+        }
+
+        public String getReservation_random_id() {
+            return reservation_random_id;
+        }
+
+        public void setReservation_random_id(String reservation_random_id) {
+            this.reservation_random_id = reservation_random_id;
+        }
+
+        private String reservation_expiration_date;
+        private String reservation_random_id;
+    }
 }

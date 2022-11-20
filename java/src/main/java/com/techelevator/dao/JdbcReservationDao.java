@@ -54,7 +54,7 @@ public class JdbcReservationDao implements ReservationDao{
     public Reservation postInviteeInfo(String reservationRandomId, String expirationDate) {
         Reservation reservation = null;
         String sql = "INSERT INTO reservation (reservation_random_id, reservation_expiration_date) VALUES (?, ?) RETURNING reservation_id";
-        int reservationId = jdbcTemplate.queryForObject(sql, Integer.class, reservation.getRandomId(), reservation.getExpirationDate());
+        int reservationId = jdbcTemplate.queryForObject(sql, Integer.class, reservationRandomId, expirationDate);
         return reservation;
     }
 
