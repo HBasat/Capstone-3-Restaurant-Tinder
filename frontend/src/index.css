@@ -1,155 +1,180 @@
-body {
+body{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Arial Black' 'Arial' 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 
-.hero-image {
-  background: url("./Images/backgroundImage.jpg");
-  background-size: 100vw;
-  background-position: center;
-  display: flex;
-  width: 100%;
+
+/* Background Image */
+.bg{
+  width: 100vw;
   height: 100vh;
-  flex-direction: column;
+
+  background: url("./Images/backgroundImage.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%; 
 }
 
-/* Navbar Styling */
 
-.navbar {
-  display: flex;
-  width: 100%;
+/* Navbar */
+.navbar{
+  background-color: #2c1e2a;
+  filter: drop-shadow(0px 5px 5px #2c1e2a);
   height: 90px;
-  background-color: #DCFFF7;
-  filter: drop-shadow(0px 4px 4px grey);
-}
-
-.home-button {
-  font-family: Homenaje;
+  padding: 30px 25px;
 }
 
 .title {
-  font-family: Homenaje;
-  color: #177784;
+  font-family: Arial Black;
+  color: #93aab5;
+  margin-left: 6px;
 }
 
-/*Login and Register Styling*/
+.home-button{
+  color: #d5b391;
+  text-decoration: none;
+  margin-right: 6px;
+}
 
-.login-container, .register-container {
+.logout{
+  color: #d5b391;
+  text-decoration: none;
+  margin-right: 6px;
+}
+
+
+
+/* Login/Register Containers, as well as some Zipcode Page Buttons/Containers */
+.access-container, .zip-container{
+  display: flex;
+	justify-content: center;
+	align-items: center;
+  height: 75vh;
+  filter: drop-shadow(0px 5px 5px #2c1e2a);
+}
+
+.access-box, .zip-box{
+  background-color: #d5b391;
+  padding: 170px 50px;
+}
+
+.access-header, .header{
+  font-family: Arial;
+  font-weight: bold;
+  color: #5f3c40;
+}
+
+input{
+  background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+
+.button-span{
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial;
+  color: #5f3c40;
+}
+
+
+.button-signin, .swap-functions{
+  border-radius: 20px;
+	border: 1px solid #5f3c40;
+	background-color: #5f3c40;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+  display: flex;
+}
+
+.logo-container{
+  background-color: #fcd3aa;
+  padding: 110px 70px;
+}
+
+.logo-catchphrase{
+  padding-top: 6px;
+  text-align: center;
+  font-family: Arial Black;
+  color: #5f3c40;
+
+}
+
+.logo-container2{
+  background-color: #fcd3aa;
+  padding: 133px 70px;
+}
+
+
+
+/* Enter Zipcode/Invite Guests Pages */
+.zip-form{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
-  justify-self: center;
-  filter: drop-shadow(0px 4px 4px grey);
 }
 
-.login-box, .register-box {
-  padding: 4rem;
-  background-color: #DCFFF7;
+.zip-button, .done-button, .inv-button .up, .down{
   border-radius: 20px;
-  display: flex;
-  flex-direction: column;
+	border: 1px solid #5f3c40;
+	background-color: #5f3c40;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-align: center;
+  text-transform: uppercase;
 }
 
-.sign-in, .create-account {
-  font-family: Homenaje;
-  text-align: center;
-  color: #177784;
+.header{ 
+  margin-top: 30px;
+  margin-bottom: 0px;
 }
 
-.button-span {
-  padding-top: 20px;
-  display: flex;
-}
 
-.button-signin {
-  border-radius: 20px;
-  border-width: 1px;
-}
-
-/* Home Page Styling */
-
-.zip-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 90vh;
-  justify-self: center;
-  filter: drop-shadow(0px 4px 4px grey);
-}
-
-.zip-box {
-  padding: 4rem;
-  background-color: #DCFFF7;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-}
-
-#zipcode {
-  text-align: center;
-}
-
-/* Restraunt Styling */
+/* Resturant Card Formatting */
 .all-restaurants{
   display: flex;
-  flex-wrap: nowrap;
-  gap: 20px;
-  overflow-x: auto;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+
+.restaurant-card{
+  display: flex;
+  flex-direction: column;
+  background-color: #e1d9d1;
+	text-align: center;
+  height: 50vh;
+  width: 400px;
+  margin: 10px;
+  filter: drop-shadow(0px 5px 5px #2c1e2a);
 }
 
 .restaurant-img{
-  height: 100px;
-  width: 250px;
+  height: 200px;
+  width: auto;
+  filter: drop-shadow(0px 5px 5px #2c1e2a);
+  padding-bottom: 20px;
 }
 
-.restaurant-card{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    background-color: #DCFFF7;
-    border-radius: 5px;
-    padding: 10px;
-}
-
-/* Guest List Styling */
-.guest-list{
-  background-color: #DCFFF7;
-}
-
-.guest-title{
-  text-decoration: underline;
-  width: 25%;
-}
-
-/* .invitee-list{
-
-} */
-
-.invitee{
-  list-style: none;
+.restaurant-name, .resturant-address{
   text-align: center;
 }
-
-/* Mobile Styling */
-
-@media only screen and (max-width: 768px) {
-  .hero-image{
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-}
-

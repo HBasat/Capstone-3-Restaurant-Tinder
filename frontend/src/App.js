@@ -8,11 +8,13 @@ const store = ConfigureStore();
 function App() {
 
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <Main />
-      </BrowserRouter>
-    </Provider>
+    <div className='bg'>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Main />
+        </BrowserRouter>
+      </Provider>
+    </div>
   );
 }
 

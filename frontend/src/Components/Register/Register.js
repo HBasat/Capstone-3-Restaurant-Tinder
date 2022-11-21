@@ -2,6 +2,7 @@ import axios from 'axios'
 import {Component} from 'react'
 import {Link} from 'react-router-dom'
 import { baseUrl } from '../../Shared/baseUrl'
+import logo from '../../Images/logo.png'
 
 class Register extends Component{
 
@@ -33,9 +34,9 @@ class Register extends Component{
 
     render(){
         return(
-            <div className="register-container">
-                <div className="register-box">
-                    <h1 className="create-account">Create Account</h1>
+            <div className="access-container">
+                <div className="access-box">
+                    <h1 className="access-header">Create Account</h1>
                     <label class="sr-only">Username</label>
                     <input className="username-input"
                         type="text"
@@ -68,8 +69,16 @@ class Register extends Component{
                         onChange={this.handleInputChange}
                         required
                     />
-                <Link to="/login">Have an account?</Link>
-                <button className="button-signin" type="submit" onClick={this.handleSubmit}>Create Account</button>
+                    <span className='button-span'>
+                    <Link style={{color:'#5f3c40'}} to="/login">Have an account?</Link>
+                    <button className="button-signin" type="submit" onClick={this.handleSubmit}>Create Account</button>
+                    </span>
+            </div>
+            <div className='logo-container2'>
+                <div className='logo-overlay'>
+                    <img className='logo-image'src={logo} alt='logo'/>
+                    <p className='logo-catchphrase'>words here</p>
+                </div>
             </div>
         </div>
         )

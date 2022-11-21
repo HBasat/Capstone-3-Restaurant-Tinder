@@ -108,11 +108,11 @@ function Home(props) {
     /* once handleClick is functional, make the const map of cards up here then render it to the DOM below in the return */
     return(
         <div>
-            <button onClick={toggleClicked}>{isClicked ? "Search for Restraunts" : "Invite Friends"}</button>
+            <button className='swap-functions' onClick={toggleClicked}>{isClicked ? "Search for Restraunts" : "Invite Friends"}</button>
             <div className='zip-container'>
                 <div className='zip-box' >
-                    <form>
-                        <h2>{isClicked ? "Type Friends to Invite!" : "Find restaurants near you!"}</h2>
+                    <form className='zip-form'>
+                        <h2 className='header'>{isClicked ? "Type Friends to Invite!" : "Find restaurants near you!"}</h2>
                         {!isClicked && <input
                             type="text"
                             id="zipcode"
@@ -128,14 +128,14 @@ function Home(props) {
                             placeholder="Name of Friend to Invite"
                             onChange={handleInvitee}
                         />}
-                        {isClicked && <button type="button" onClick={handleInviteeClick}>Invite Friend</button>}
-                        {isClicked && <h6>When should your guests make their decision?</h6>}
+                        {isClicked && <button className='inv-button' type="button" onClick={handleInviteeClick}>Invite Friend</button>}
+                        {isClicked && <h6 className='header'>When should your guests make their decision?</h6>}
                         {isClicked && <input 
                             type="date"
                             name="date"
                             onChange={handleDate}
                         />}
-                        {isClicked && <button><Link inviteeArray={inviteeArray} to="./Linker">Done</Link></button>}
+                        {isClicked && <button className='done-button'><Link style={{color:'#FFFFFF'}} inviteeArray={inviteeArray} to="./Linker">Done</Link></button>}
                         {!isClicked && <button
                             type='submit'
                             value="Submit"

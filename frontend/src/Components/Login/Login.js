@@ -5,6 +5,7 @@ import {withRouter} from 'react-router-dom'
 import {addToken, addUser} from '../../Redux/actionCreators'
 import {baseUrl} from '../../Shared/baseUrl'
 import axios from 'axios'
+import logo from '../../Images/logo.png'
 
 
 
@@ -45,35 +46,43 @@ class Login extends Component {
 
     render(){
         return(
-            <div className='login-container'>
-                <div className='login-box'>
-                    <h1 className='sign-in'>Please Sign In</h1>
-                    <label class="sr-only">Username</label>
-                    <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        class="form-control"
-                        placeholder="Username"
-                        v-model="user.username"
-                        onChange={this.handleInputChange}
-                        required
-                    />
-                    <label class="sr-only">Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        class="form-control"
-                        placeholder="Password"
-                        v-model="user.password"
-                        onChange={this.handleInputChange}
-                        required
-                    />
-                    <span className='button-span'>
-                    <Link to="/register" >Need an account?</Link>
-                    <button className='button-signin' type="submit" onClick={this.handleLogin}>Sign in</button>
-                    </span>
+            <div className='login'>
+                <div className='access-container'>
+                    <div className='access-box'>
+                        <h1 className='access-header'>Please Sign In</h1>
+                        <label class="sr-only">Username</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            class="form-control"
+                            placeholder="Username"
+                            v-model="user.username"
+                            onChange={this.handleInputChange}
+                            required
+                        />
+                        <label class="sr-only">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            class="form-control"
+                            placeholder="Password"
+                            v-model="user.password"
+                            onChange={this.handleInputChange}
+                            required
+                        />
+                        <span className='button-span'>
+                        <Link style={{color:'#5f3c40'}} to="/register" >Need an account?</Link>
+                        <button className='button-signin' type="submit" onClick={this.handleLogin}>Sign in</button>
+                        </span>
+                    </div>
+                    <div className='logo-container'>
+                        <div className='logo-overlay'>
+                            <img className='logo-image'src={logo} alt='logo'/>
+                            <p className='logo-catchphrase'>words here</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

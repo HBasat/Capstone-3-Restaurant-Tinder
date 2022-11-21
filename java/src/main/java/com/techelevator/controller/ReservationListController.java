@@ -17,11 +17,13 @@ public class ReservationListController {
 
     public ReservationListController(ReservationListDao reservationList){this.reservationListDao = reservationList;}
 
+    @CrossOrigin
     @RequestMapping(path = "/like", method = RequestMethod.PUT)
     public ReservationList updateLike (@RequestBody UpDownDTO dto){
         return reservationListDao.getLike(dto.getVote());
     }
 
+    @CrossOrigin
     @RequestMapping(path = "/dislike", method = RequestMethod.PUT)
     public ReservationList updateDislike (@RequestBody UpDownDTO dto) {
         return reservationListDao.getDislike(dto.getVote());
