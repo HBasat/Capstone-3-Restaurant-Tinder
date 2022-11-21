@@ -130,7 +130,7 @@ input{
   justify-content: center;
 }
 
-.zip-button, .done-button, .inv-button .up, .down{
+.zip-button, .done-button, .inv-button, .up, .down{
   border-radius: 20px;
 	border: 1px solid #5f3c40;
 	background-color: #5f3c40;

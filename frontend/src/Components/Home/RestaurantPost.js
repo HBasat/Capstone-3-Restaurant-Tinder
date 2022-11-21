@@ -6,7 +6,7 @@ import Home from './Home'
 export default function RestaurantPost(props){
     const[randomId, setRandomId] = React.useState("")
 
-    const GET_INVITEE_URL = `http://localhost:8081/invite/${randomId}`
+    const GET_INVITEE_URL = `http://localhost:3000/invite?randomId=${randomId}`
 
     const reservationDate = JSON.parse(localStorage.getItem("dateTest"))
 
