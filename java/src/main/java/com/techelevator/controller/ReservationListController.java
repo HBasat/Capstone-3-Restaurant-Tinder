@@ -29,6 +29,16 @@ public class ReservationListController {
         return reservationListDao.getDislike(dto.getVote());
     }
 
+    @RequestMapping(path = "/like", method = RequestMethod.POST)
+    public ReservationList postLike (@RequestBody UpDownDTO dto) {
+        return reservationListDao.getLike(dto.getVote());
+    }
+
+    @RequestMapping(path = "/dislike", method = RequestMethod.POST)
+    public ReservationList postDislike (@RequestBody UpDownDTO dto) {
+        return reservationListDao.getDislike(dto.getVote());
+    }
+
     public static class UpDownDTO{
 
         public int getVote() {

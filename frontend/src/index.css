@@ -27,21 +27,26 @@ body{
   filter: drop-shadow(0px 5px 5px #2c1e2a);
   height: 90px;
   padding: 30px 25px;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .title {
   font-family: Arial Black;
   color: #93aab5;
   margin-left: 6px;
+  position: absolute;
+  left: 6px;  
 }
 
-.home-button{
-  color: #d5b391;
-  text-decoration: none;
-  margin-right: 6px;
+.divider{
+  padding: 10px;
+  margin: 0;
 }
 
-.logout{
+
+
+.home-button, .home, .logout{ /* these dont work bc they are linker components from react DOM */
   color: #d5b391;
   text-decoration: none;
   margin-right: 6px;
@@ -130,17 +135,21 @@ input{
   justify-content: center;
 }
 
-.zip-button, .done-button, .inv-button, .up, .down{
+.zip-button, .done-button, .inv-button, .up, .down, .order-click{
   border-radius: 20px;
 	border: 1px solid #5f3c40;
 	background-color: #5f3c40;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
-	padding: 12px 45px;
+	padding-top: 12px;
+  padding-bottom: 12px;
 	letter-spacing: 1px;
 	text-align: center;
   text-transform: uppercase;
+  width: 200px;
+  justify-self: center;
+  margin: auto;
 }
 
 .header{ 
@@ -150,9 +159,10 @@ input{
 
 
 /* Resturant Card Formatting */
-.all-restaurants{
+.restaurant-list{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   flex-grow: 1;
 }
 
@@ -161,20 +171,42 @@ input{
   display: flex;
   flex-direction: column;
   background-color: #e1d9d1;
-	text-align: center;
-  height: 50vh;
+  height: 45vh;
   width: 400px;
-  margin: 10px;
-  filter: drop-shadow(0px 5px 5px #2c1e2a);
+  margin: 20px;
+  margin-right: 5px;
+  filter: drop-shadow(0px 10px 5px #2c1e2a);
+  align-items: center;
 }
 
 .restaurant-img{
   height: 200px;
   width: auto;
   filter: drop-shadow(0px 5px 5px #2c1e2a);
-  padding-bottom: 20px;
 }
 
-.restaurant-name, .resturant-address{
+.restaurant-name{
+  color: #2c1e2a;
   text-align: center;
+  font-weight: bold;
+  margin-top: 15px;
+
+}
+
+.restaurant-address{
+  margin-top: 0px;
+}
+
+.restaurant-phone{
+  margin-top: 0px;
+}
+
+.open{
+  color: #00661d;
+  font-weight: bold;
+}
+
+.closed{
+  color: #660000;
+  font-weight: bold;
 }

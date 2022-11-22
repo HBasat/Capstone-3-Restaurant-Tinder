@@ -85,7 +85,7 @@ function Home(props) {
                 <p className='restaurant-name' >{restaurant.restaurantName}</p>
                 <p className='restaurant-address' >{restaurant.restaurantCity}, {restaurant.restaurantState}</p>
                 {restaurant.restaurantTeleNumber && 
-                    <p>Click to Order</p>
+                    <p className='order-click'>Call to Order</p>
                 }
                 {Array.isArray(restSchedule.data) && 
                     restSchedule.data
@@ -95,10 +95,10 @@ function Home(props) {
                     console.log(schedule.scheduleDay)
                     if(weekday[today.getDay()] === schedule.scheduleDay) {
                         {console.log("open")}
-                        return <p>Open</p>
+                        return <p className='open'>Open!</p>
                     } else {
                         {console.log("closed")}
-                        return <p>Closed</p>
+                        return <p className='close'>Closed!</p>
                     }
                 })}
             </div>
@@ -150,7 +150,7 @@ function Home(props) {
                 {isClicked && <h3 className="guest-title">Guest List</h3>}
                 {isClicked && <ul className="invitee-list">{inviteeArray.map(invitee => (<li key={invitee.invitee} className="invitee">{invitee.invitee}</li>))}</ul>}
             </div>
-            <div>
+            <div className='restaurant-list'>
                 {restaurantMatches}
             </div>
         </div>

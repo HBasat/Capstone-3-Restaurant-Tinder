@@ -15,9 +15,37 @@ export default function RestaurantData(props){
         setDislike(prevDislike => prevDislike + 1)
    }
 
+
+   //Create post request for the like and dislike states and then create useeffects for them that Post the default zero state when the page loads
+   //might need to put a preventDefault in the put useeffects if the state keeps getting reverted to 0
+
+    // React.useEffect(() => {
+    //     axios.post("http://localhost:8081/invite_list/like", {
+    //         rl_up: like
+    //     })
+    //     .then(function (response) {
+    //         console.log(response);
+    //     })
+    //     .catch((err) => console.log(err))
+    //     }, [])
+
+    // React.useEffect(() => {
+    //     axios.post("http://localhost:8081/invite_list/dislike", {
+    //         rl_down: dislike
+    //     })
+    //     .then(function (response) {
+    //         console.log(response);
+    //         })
+    //     .catch((err) => console.log(err))
+    //     }, [])
+
+
+
+   //UseEffects that update the like and dislike counts per restaurant in the database Restaurant List table
+
    React.useEffect(() => {
     console.log(like)
-    axios.post("http://localhost:8081/invitelist/like", {
+    axios.put("http://localhost:8081/invite_list/like", {
         rl_up: like
     })
     .then(function (response) {
@@ -28,7 +56,7 @@ export default function RestaurantData(props){
 
     React.useEffect(() => {
         console.log(dislike)
-        axios.post("http://localhost:8081/invitelist/dislike", {
+        axios.put("http://localhost:8081/invite_list/dislike", {
             rl_down: dislike
         })
         .then(function (response) {

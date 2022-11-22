@@ -26,8 +26,20 @@ public class JdbcReservationDao implements ReservationDao{
         return reservation;
     }
 
+//    @Override
+//    public Reservation getRandomId(String randomId) {
+//        Reservation reservation = null;
+//        String sql = "SELECT * FROM reservation WHERE reservation_random_id = ?";
+//        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, randomId);
+//        while (results.next()){
+//            reservation = mapRowToReservation(results);
+//        }
+//
+//        return reservation;
+//    }
+
     @Override
-    public Reservation getRandomId(int randomId) {
+    public boolean getRandomId(String randomId) {
         Reservation reservation = null;
         String sql = "SELECT * FROM reservation WHERE reservation_random_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, randomId);
@@ -35,7 +47,7 @@ public class JdbcReservationDao implements ReservationDao{
             reservation = mapRowToReservation(results);
         }
 
-        return reservation;
+        return true;
     }
 
     @Override

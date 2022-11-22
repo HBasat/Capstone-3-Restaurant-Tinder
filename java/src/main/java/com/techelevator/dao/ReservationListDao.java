@@ -4,7 +4,8 @@ import com.techelevator.model.ReservationList;
 
 public interface ReservationListDao {
 
-    public ReservationList getLike(int like);
+    public ReservationList getLike(int reservationListLike);
 
-    public ReservationList getDislike(int dislike);
+    public ReservationList getDislike(int reservationListDislike);
+
 }

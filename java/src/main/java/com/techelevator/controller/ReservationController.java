@@ -20,10 +20,22 @@ public class ReservationController {
 
     public ReservationController(ReservationDao reservation){this.reservationDao = reservation;}
 
-//    @RequestMapping(path = "", method = RequestMethod.POST)
-//        public Reservation postInviteeInfo(@RequestParam ("reservation_expiration_date") String expirationDate, @RequestParam("reservation_random_id") String randomId) {
-//        return reservationDao.postInviteeInfo(randomId, expirationDate);
+
+//    @RequestMapping(path = "/random_id/{randomId}",method = RequestMethod.GET)
+//    public Reservation verifyRandomId(@PathVariable String randomId) {
+//        return reservationDao.getRandomId(randomId);
 //    }
+
+    @RequestMapping(path = "/random_id/{randomId}",method = RequestMethod.GET)
+    @ResponseBody
+    public Boolean isValid(@PathVariable String randomId) {
+        return reservationDao.getRandomId(randomId);
+    }
+
+    @RequestMapping(path = "/expiration", method = RequestMethod.GET)
+    public Reservation randomIdExpiration(@PathVariable String expirationDate) {
+        return reservationDao.getExpirationDateByRandomId(expirationDate);
+    }
 
 
     @RequestMapping(path = "", method = RequestMethod.POST)

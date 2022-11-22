@@ -2,18 +2,18 @@ package com.techelevator.model;
 
 public class ReservationList {
 
-    private int reservationListId;
+    private int reservationId;
 
     private int reservationListLike;
 
     private int reservationListDislike;
 
-    public int getReservationListId() {
-        return reservationListId;
+    public int getReservationId() {
+        return reservationId;
     }
 
-    public void setReservationListId(int reservationListId) {
-        this.reservationListId = reservationListId;
+    public void setReservationId(int reservationId) {
+        this.reservationId = reservationId;
     }
 
     public int getReservationListLike() {

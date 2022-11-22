@@ -8,7 +8,9 @@ public interface ReservationDao {
 
     public Reservation getReservationId(int reservationId);
 
-    public Reservation getRandomId(int randomId);
+//    public Reservation getRandomId(String randomId);
+
+    public boolean getRandomId(String randomId);
 
     public Reservation getExpirationDateByRandomId(String expirationDate);
 

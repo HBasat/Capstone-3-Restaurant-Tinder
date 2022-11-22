@@ -16,7 +16,7 @@ public class JdbcReservationListDao implements ReservationListDao{
     @Override
     public ReservationList getLike(int like) {
         ReservationList reservationList = null;
-        String sql = "UPDATE reservations_list SET rl_up = ? WHERE rl_resid = ?";
+        String sql = "UPDATE reservations_list SET rl_up = ? WHERE rl_rid = ?";
         jdbcTemplate.update(sql, like);
         return reservationList;
     }
@@ -24,7 +24,7 @@ public class JdbcReservationListDao implements ReservationListDao{
     @Override
     public ReservationList getDislike(int dislike) {
         ReservationList reservationList = null;
-        String sql = "UPDATE reservations_list SET rl_down = ? WHERE rl_resid = ?";
+        String sql = "UPDATE reservations_list SET rl_down = ? WHERE rl_rid = ?";
         jdbcTemplate.update(sql, dislike);
         return reservationList;
     }
