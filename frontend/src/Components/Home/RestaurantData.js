@@ -66,16 +66,26 @@ export default function RestaurantData(props){
         }, [dislike])
 
     return (
-        <>
-            <div key={props.restaurant.restaurantID} className='all-restaurants'>
+        <div className='all-restaurants'>
         <div className='restaurant-card'>
-            <img className='restaurant-img' alt='Restaurant Photo' src={props.restaurant.restaurantImgUrl} />
-            <p className='restaurant-name' >{props.restaurant.restaurantName}</p>
-            <p className='restaurant-address' >{props.restaurant.restaurantCity}, {props.restaurant.restaurantState}</p>
+            <img className='restaurant-img' alt='Restaurant Photo' src={props.restaurant.restaurantImgUrl}/>
+            <p className='restaurant-name'>{props.restaurant.restaurantName}</p>
+            <p className='divider'> ————————————————— </p>
+            <p className='restaurant-address'>{props.restaurant.restaurantAddress}, {props.restaurant.restaurantCity}, {props.restaurant.restaurantState}</p>
+            <div className='TD'>
+                { props.restaurant.restaurantTakeout && <p className='takeout'>Takeout Available</p> }
+                { props.restaurant.restaurantDelivery && <p className='delivery'>Delivery Available</p> }
+            </div>
+
+            
+            
+            // NEEDS OPEN/CLOSE FUNCTIONALITY //
+
+            { props.restaurant.restaurantTeleNumber && <p className='order-click'>Call to Order</p> }
+
             <button className='up' onClick={handleLike}>Like {like}</button>
             <button className='down' onClick={handleDislike}>Dislike {dislike}</button>
         </div>
-    </div>
-        </>
+        </div>
     )
 }

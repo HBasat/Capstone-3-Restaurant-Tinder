@@ -56,7 +56,7 @@ export default function Invite(props) {
             <div>
                 {(() => {
                     if((tokenValid === true) && (date <= todaysDate)){
-                        return {restaurantMatches}
+                        return <div className="restaurant-list">{restaurantMatches}</div>
                     } else if (tokenValid === false) {
                         return {tokenInvalid}
                     } else if(date > todaysDate) {

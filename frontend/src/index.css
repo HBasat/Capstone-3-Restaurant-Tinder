@@ -5,21 +5,30 @@ body{
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
 
-
-
-/* Background Image */
-.bg{
-  width: 100vw;
-  height: 100vh;
-
-  background: url("./Images/backgroundImage.jpg");
+  /* Background Image */
+  background: url("./Images/backgroundImage.jpg") no-repeat 0 0 fixed;
   background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-size: 100% 100%; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+
+  
 }
 
+  /* Background Image */
+.bg{
+  background: url("./Images/backgroundImage.jpg") no-repeat 0 0 fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+
+}
 
 /* Navbar */
 .navbar{
@@ -44,8 +53,6 @@ body{
   margin: 0;
 }
 
-
-
 .home-button, .home, .logout{ /* these dont work bc they are linker components from react DOM */
   color: #d5b391;
   text-decoration: none;
@@ -58,12 +65,13 @@ body{
 .access-container, .zip-container{
   display: flex;
 	justify-content: center;
-	align-items: center;
-  height: 75vh;
+	align-items: stretch;
+  height: 60vh;
   filter: drop-shadow(0px 5px 5px #2c1e2a);
+  margin-top: 100px;
 }
 
-.access-box, .zip-box{
+.access-box{
   background-color: #d5b391;
   padding: 170px 50px;
 }
@@ -95,7 +103,7 @@ input{
 }
 
 
-.button-signin, .swap-functions{
+.button-signin{
   border-radius: 20px;
 	border: 1px solid #5f3c40;
 	background-color: #5f3c40;
@@ -135,7 +143,27 @@ input{
   justify-content: center;
 }
 
-.zip-button, .done-button, .inv-button, .up, .down, .order-click{
+.zip-box{
+  background-color: #d5b391;
+  padding-top: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 100px;
+}
+
+.zip-container{
+  display: flex;
+	justify-content: center;
+	align-items: center;
+  filter: drop-shadow(0px 5px 5px #2c1e2a);
+}
+
+.header{ 
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+.zip-button, .done-button, .inv-button, .up, .down, .order-click, .swap-functions{
   border-radius: 20px;
 	border: 1px solid #5f3c40;
 	background-color: #5f3c40;
@@ -148,14 +176,18 @@ input{
 	text-align: center;
   text-transform: uppercase;
   width: 200px;
-  justify-self: center;
   margin: auto;
 }
 
-.header{ 
-  margin-top: 30px;
+.swap-functions{
+  display: flex;
+  align-items: center;
+  margin-top: 100px;
   margin-bottom: 0px;
+  flex-direction: column;
+
 }
+
 
 
 /* Resturant Card Formatting */
@@ -163,15 +195,13 @@ input{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  flex-grow: 1;
 }
-
 
 .restaurant-card{
   display: flex;
   flex-direction: column;
   background-color: #e1d9d1;
-  height: 45vh;
+  height: 50vh;
   width: 400px;
   margin: 20px;
   margin-right: 5px;
@@ -187,18 +217,38 @@ input{
 
 .restaurant-name{
   color: #2c1e2a;
-  text-align: center;
+  font-family: 'Arial Black';
+  font-size: 20px;
   font-weight: bold;
-  margin-top: 15px;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
 
+.divider{
+  font-size: 13px;
+  font-weight: bold;
+  padding: 10px;
 }
 
 .restaurant-address{
   margin-top: 0px;
+  margin-bottom: 0px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: bold;
 }
 
-.restaurant-phone{
+.TD{
+  font-size: 12px;
   margin-top: 0px;
+  margin-bottom: 0px;
+  display: flex;
+  flex-direction: row;
+}
+
+.takeout, .delivery{
+margin: 5px;
+font-weight: bold;
 }
 
 .open{
@@ -209,4 +259,121 @@ input{
 .closed{
   color: #660000;
   font-weight: bold;
+}
+
+.order-click{
+  margin-bottom: 50px;
+}
+
+
+
+/* Guest List */
+.guest-list{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; 
+  margin: auto;
+}
+
+.guest-divider{
+  margin-top: 15px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.guest-title{
+  color: #5f3c40;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.invitee-list{
+  list-style: none;
+  text-align: center;
+  font-weight: bold;
+  padding: 0px;
+}
+
+
+
+
+
+
+/* Mobile Styling */
+
+@media only screen and (max-width: 425px) {
+
+.navbar{
+  display: flex;
+}
+
+
+/* Login/Register Containers, as well as some Zipcode Page Buttons/Containers */
+.access-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: unset;
+  margin: 10px;
+}
+
+
+
+.access-box{
+padding: 30px 30px;
+margin-left: 20px;
+margin-right: 20px;
+}
+
+.logo-container{
+  padding-top: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.logo-overlay{
+  margin: 0px;
+  padding: 0px;
+}
+
+.logo-image{
+  height: 80%;
+}
+
+.logo-catchphrase{
+  padding-bottom: 0px;
+  margin-bottom: 5px;
+}
+
+
+
+/* Enter Zipcode/Invite Guests Pages */
+.access-container, .zip-container{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.zip-box{
+  padding: 30px;
+}
+
+.restaurant-list{
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurant-card{
+  margin: 10px;
+  margin-right: unset;
+  padding-bottom: 460px;
+}
 }

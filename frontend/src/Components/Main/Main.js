@@ -36,18 +36,19 @@ class Main extends Component {
         return(
             <div className='hero-image'>
                 {this.props.token.token !== undefined ?
-                        <div className='navbar'>
-                            <h1 className='title'>FoodMatch</h1>
-                            <Link classname='home' to='/home'>Home | </Link>
-                            <Link classname='logout' to='/login' onClick={this.handleLogout}>logout</Link> 
-                            <Redirect to='/home'/>
-                    
-                        </div>  
-                    : 
-                        <div className='navbar'>
-                            <h1 className='title' >FoodMatch</h1>
-                            <Link className='home-button' to='/login'>Home | </Link>
-                        </div>
+                       <div className='navbar'>
+                       <h1 className='title'>FoodMatch</h1>
+                       <Link classname='home' style={{color: '#d5b391'}} to='/home'>Home</Link>
+                       <p className='divider' style={{color: '#d5b391'}}> | </p>
+                       <Link classname='logout' style={{color: '#d5b391'}} to='/login' onClick={this.handleLogout}>Logout</Link> 
+                       <Redirect to='/home'/>
+               
+                   </div>  
+               : 
+                   <div className='navbar'>
+                       <h1 className='title'>FoodMatch</h1>
+                       <Link className='home-button' style={{color: '#d5b391'}} to='/login'>Home </Link>
+                   </div>
                 }
                 <Switch>
                     <Route path='/login' component={() => <Login/>}/>

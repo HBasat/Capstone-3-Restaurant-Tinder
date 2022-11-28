@@ -11,7 +11,11 @@ class Register extends Component{
         this.state = {
             username: '',
             password: '',
-            confirmPassword: ''
+            confirmPassword: '',
+
+            emailError: '',
+            passwordError: '',
+            confirmPasswordError: ''
         }
         
     }
@@ -24,13 +28,56 @@ class Register extends Component{
     }
 
     handleSubmit = () => {
+        let emailError = "";
         const data = {username: this.state.username, password: this.state.password, confirmPassword: this.state.confirmPassword, role: 'USER'}
-        if(this.state.password === this.state.confirmPassword){
-            axios.post(baseUrl + "/register", data)
-        }else{
-            alert("Password and Confirm Password must match!!!")
+        
+        
+        const isValid = this.validate();
+        if (isValid) {
+            try{
+                axios.post(baseUrl + "/register", data);
+            } catch(error) {
+                emailError = "This email has already been registered.";
+                this.setState({ emailError });
+            }
         }
     }
+
+    validate = () => {
+        let emailError = "";
+        let passwordError = "";
+        let confirmPasswordError = "";
+
+
+        // Comparisons for validations 
+        if (!this.state.username.includes("@")) {
+          emailError = "Email is invalid.";
+        }
+
+
+        if(this.state.password.length <= 7){
+            passwordError = "Password must be minimum 8 characters.";
+        }
+        else if(!this.state.password.match(/\d+/)){
+            passwordError = "Password does not contain a number.";
+        }
+        else if(!this.state.password.match(/[A-Z]/)){
+            passwordError = "Password does not contain an uppercase letter.";
+        }
+        else if(!this.state.password.match(/[a-z]/)){
+            passwordError = "Password does not contain a lowercase letter.";
+        }
+
+        if (!this.state.password === this.state.confirmPassword){
+            confirmPasswordError = "Passwords do not match.";
+        }
+        
+    
+        if (emailError || passwordError || confirmPasswordError) {
+          this.setState({ emailError, passwordError, confirmPasswordError});
+          return false;
+        } else return true;
+      }
 
     render(){
         return(
@@ -43,11 +90,15 @@ class Register extends Component{
                         id="username"
                         name="username"
                         class="form-control"
-                        placeholder="Username"
+                        placeholder="Email"
                         v-model="user.username"
                         onChange={this.handleInputChange}
                         required
                     />
+
+                    <div style={{ fontSize: 12, color: "red" }}> {this.state.emailError} </div>
+
+
                     <label class="sr-only">Password</label>
                     <input className="password-input"
                         type="password"
@@ -59,6 +110,10 @@ class Register extends Component{
                         onChange={this.handleInputChange}
                         required
                     />
+
+                    <div style={{ fontSize: 12, color: "red" }}> {this.state.passwordError} </div>
+
+
                     <input className="confirm-password-input"
                         type="password"
                         id="password-confirm"
@@ -69,6 +124,10 @@ class Register extends Component{
                         onChange={this.handleInputChange}
                         required
                     />
+
+                    <div style={{ fontSize: 12, color: "red" }}> {this.state.confirmPasswordError} </div>
+
+
                     <span className='button-span'>
                     <Link style={{color:'#5f3c40'}} to="/login">Have an account?</Link>
                     <button className="button-signin" type="submit" onClick={this.handleSubmit}>Create Account</button>

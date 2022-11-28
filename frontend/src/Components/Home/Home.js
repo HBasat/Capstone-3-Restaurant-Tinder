@@ -83,10 +83,15 @@ function Home(props) {
             <div className='restaurant-card'>
                 <img className='restaurant-img' alt='Restaurant Photo' src={restaurant.restaurantImgUrl} />
                 <p className='restaurant-name' >{restaurant.restaurantName}</p>
-                <p className='restaurant-address' >{restaurant.restaurantCity}, {restaurant.restaurantState}</p>
-                {restaurant.restaurantTeleNumber && 
-                    <p className='order-click'>Call to Order</p>
-                }
+                <p className='divider'> ————————————————— </p>  
+                <p className='restaurant-address' >{restaurant.restaurantAddress},{restaurant.restaurantCity}, {restaurant.restaurantState}</p>
+                <div className='TD'>
+                    { restaurant.restaurantTakeout && <p className='takeout'>Takeout Available</p> }
+                    { restaurant.restaurantDelivery && <p className='delivery'>Delivery Available</p> }
+                </div>
+
+
+                <div className="operation">
                 {Array.isArray(restSchedule.data) && 
                     restSchedule.data
                     .filter(schedule => schedule.scheduleDay === weekday[today.getDay()] && schedule.restaurantScheduleID == restaurant.restaurantID)
@@ -102,13 +107,16 @@ function Home(props) {
                     }
                 })}
             </div>
+            {restaurant.restaurantTeleNumber && 
+                    <p className='order-click'>Call to Order</p>
+                }
+            </div>
         </div>
     )
 
     /* once handleClick is functional, make the const map of cards up here then render it to the DOM below in the return */
     return(
         <div>
-            <button className='swap-functions' onClick={toggleClicked}>{isClicked ? "Search for Restraunts" : "Invite Friends"}</button>
             <div className='zip-container'>
                 <div className='zip-box' >
                     <form className='zip-form'>
@@ -144,12 +152,19 @@ function Home(props) {
                             Submit
                         </button>}
                     </form>  
+
+
+                    <div className="guest-list">
+                        {isClicked && <p className='guest-divider'> ————————————————— </p>}
+                        {isClicked && <h3 className="guest-title">Guest List</h3>}
+                        
+                        {isClicked && <ul className="invitee-list">{inviteeArray.map(invitee => (<li key={invitee.invitee} className="invitee">{invitee.invitee}</li>))}</ul>}
+                    </div>
+
+                    <button className='swap-functions' onClick={toggleClicked}>{isClicked ? "Search for Restraunts" : "Invite Friends"}</button>
                 </div>
             </div>
-            <div className="guest-list">
-                {isClicked && <h3 className="guest-title">Guest List</h3>}
-                {isClicked && <ul className="invitee-list">{inviteeArray.map(invitee => (<li key={invitee.invitee} className="invitee">{invitee.invitee}</li>))}</ul>}
-            </div>
+            
             <div className='restaurant-list'>
                 {restaurantMatches}
             </div>

@@ -56,7 +56,7 @@ class Login extends Component {
                             id="username"
                             name="username"
                             class="form-control"
-                            placeholder="Username"
+                            placeholder="Email"
                             v-model="user.username"
                             onChange={this.handleInputChange}
                             required

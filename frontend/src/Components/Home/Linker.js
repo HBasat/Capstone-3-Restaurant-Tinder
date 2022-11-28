@@ -32,12 +32,23 @@ export default function Linker({inviteeArray}){
 
     const restaurantMatches = Array.isArray(restaurants.data) && restaurants.data.map((restaurant) => 
     <div className='all-restaurants'>
-        <div className='restaurant-card'>
-            <img className='restaurant-img' alt='Restaurant Photo' src={restaurant.restaurantImgUrl} />
-            <p className='restaurant-name' >{restaurant.restaurantName}</p>
-            <p className='restaurant-address' >{restaurant.restaurantCity}, {restaurant.restaurantState}</p>
+            <div className='restaurant-card'>
+                <img className='restaurant-img' alt='Restaurant Photo' src={restaurant.restaurantImgUrl}/>
+                <p className='restaurant-name'>{restaurant.restaurantName}</p>
+                <p className='divider'> ————————————————— </p>
+                <p className='restaurant-address'>{restaurant.restaurantAddress}, {restaurant.restaurantCity}, {restaurant.restaurantState}</p>
+                <div className='TD'>
+                    { restaurant.restaurantTakeout && <p className='takeout'>Takeout Available</p> }
+                    { restaurant.restaurantDelivery && <p className='delivery'>Delivery Available</p> }
+                </div>
+
+                // NEEDS OPEN/CLOSE FUNCTIONALITY //
+
+                { restaurant.restaurantTeleNumber && <p className='order-click'>Call to Order</p> }
+
+                
+            </div>
         </div>
-    </div>
     )
 
     const newArray = JSON.parse(localStorage.getItem("inviteeTest"))
@@ -57,9 +68,10 @@ export default function Linker({inviteeArray}){
     }
 
     return (
-        <div>
+        <div className="dining-box">
             <div className="zip-container">
                 <div className="zip-box">
+                    <form className="zip-form">
                     {isClicked && <h2>Where will you be Dining?</h2>}
                     {isClicked && <input
                         type="text"
@@ -69,23 +81,24 @@ export default function Linker({inviteeArray}){
                         placeholder="Enter Zip"
                         onChange={handleChange}
                     />}
-                    <button
+                    {isClicked && <button
                         onClick={toggleClicked}
                         type='submit'
                         value="Submit"
                         className='zip-button'
                     >
                         Submit
-                    </button>
+                    </button>}
                     {!isClicked && <div>
                         {newArray.map((invitee) => 
                         <RestaurantPost invitee={invitee}/>
                         )} 
                     </div>}
+                    </form>
+                    <button className='swap-functions'><Link style={{color:'#FFFFFF'}} to="./Invite">Go to Invite Page</Link></button> 
                 </div>
             </div>
-            <p><Link to="./Invite">Go to Invite Page</Link></p>
-            <div>
+            <div className="restaurant-list">
             {restaurantMatches}
             </div>
         </div>
