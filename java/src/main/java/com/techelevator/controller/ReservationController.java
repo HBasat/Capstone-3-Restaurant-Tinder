@@ -32,9 +32,9 @@ public class ReservationController {
         return reservationDao.getRandomId(randomId);
     }
 
-    @RequestMapping(path = "/expiration", method = RequestMethod.GET)
-    public Reservation randomIdExpiration(@PathVariable String expirationDate) {
-        return reservationDao.getExpirationDateByRandomId(expirationDate);
+    @RequestMapping(path = "/expiration/{randomId}", method = RequestMethod.GET)
+    public Reservation randomIdExpiration(@PathVariable String randomId) {
+        return reservationDao.getExpirationDateByRandomId(randomId);
     }
 
 

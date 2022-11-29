@@ -10,7 +10,8 @@ export default function RestaurantPost(props){
 
     const reservationDate = JSON.parse(localStorage.getItem("dateTest"))
 
-    function handleRandomId(){
+    function handleRandomId(event){
+        event.preventDefault()
         setRandomId(makeid(5))
     }
 

@@ -43,18 +43,31 @@ public class JdbcReservationDao implements ReservationDao{
         Reservation reservation = null;
         String sql = "SELECT * FROM reservation WHERE reservation_random_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, randomId);
-        while (results.next()){
-            reservation = mapRowToReservation(results);
+        if (results.next()){
+            return true;
+//            reservation = mapRowToReservation(results);
         }
 
-        return true;
+        return false;
     }
 
+//    @Override
+//    public Reservation getExpirationDateByRandomId(String expirationDate) {
+//        Reservation reservation = null;
+//        String sql = "SELECT reservation_expiration_date FROM reservation WHERE reservation_random_id = ?";
+//        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, expirationDate);
+//        while (results.next()){
+//            reservation = mapRowToReservation(results);
+//        }
+//
+//        return reservation;
+//    }
+
     @Override
-    public Reservation getExpirationDateByRandomId(String expirationDate) {
+    public Reservation getExpirationDateByRandomId(String randomId) {
         Reservation reservation = null;
-        String sql = "SELECT reservation_expiration_date FROM reservation WHERE reservation_random_id = ?";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, expirationDate);
+        String sql = "SELECT * FROM reservation WHERE reservation_random_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, randomId);
         while (results.next()){
             reservation = mapRowToReservation(results);
         }
