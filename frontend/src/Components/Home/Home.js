@@ -76,6 +76,7 @@ function Home(props) {
     console.log("Start log")
     console.log(restSchedule)
     console.log(today)
+    console.log(date)
     console.log(restaurants.data)
     console.log(Array.isArray(restaurants.data))
     const restaurantMatches = Array.isArray(restaurants.data) && restaurants.data.map((restaurant) => 
