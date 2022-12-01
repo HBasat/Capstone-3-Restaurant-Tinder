@@ -167,7 +167,7 @@ input{
   margin-bottom: 0px;
 }
 
-.zip-button, .done-button, .inv-button, .up, .down, .order-click, .swap-functions{
+.zip-button, .done-button, .inv-button, .order-click, .swap-functions{
   border-radius: 20px;
 	border: 1px solid #5f3c40;
 	background-color: #5f3c40;
@@ -180,16 +180,7 @@ input{
 	text-align: center;
   text-transform: uppercase;
   width: 200px;
-  margin: auto;
-}
-
-.up{
-  margin-top: -20px;
-  
-}
-
-.down{
-  
+  margin: 0px;
 }
 
 .swap-functions{
@@ -200,8 +191,6 @@ input{
   flex-direction: column;
 
 }
-
-
 
 /* Resturant Card Formatting */
 .restaurant-list{
@@ -214,7 +203,7 @@ input{
   display: flex;
   flex-direction: column;
   background-color: #e1d9d1;
-  height: 50vh;
+  height: 60vh;
   width: 400px;
   margin: 20px;
   margin-right: 5px;
@@ -259,6 +248,31 @@ input{
   flex-direction: row;
 }
 
+.LD{
+  font-size: 12px;
+  margin-top: 0px;
+  display: flex;
+  flex-direction: row;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.up, .down{
+  border-radius: 20px;
+	border: 1px solid #5f3c40;
+	background-color: #5f3c40;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding-top: 12px;
+  padding-bottom: 12px;
+	letter-spacing: 1px;
+	text-align: center;
+  text-transform: uppercase;
+  width: 150px;
+  margin: 0px;
+}
+
 .takeout, .delivery{
 margin: 5px;
 font-weight: bold;
@@ -275,7 +289,7 @@ font-weight: bold;
 }
 
 .order-click{
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 
@@ -388,5 +402,6 @@ margin-right: 20px;
   margin: 10px;
   margin-right: unset;
   padding-bottom: 460px;
+  height: 55vh;
 }
 }

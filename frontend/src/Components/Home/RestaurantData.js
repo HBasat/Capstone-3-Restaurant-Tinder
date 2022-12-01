@@ -76,11 +76,11 @@ export default function RestaurantData(props){
                 { props.restaurant.restaurantTakeout && <p className='takeout'>Takeout Available</p> }
                 { props.restaurant.restaurantDelivery && <p className='delivery'>Delivery Available</p> }
             </div>
-
             { props.restaurant.restaurantTeleNumber && <p className='order-click'>Call to Order</p> }
-
-            <button className='up' onClick={handleLike}>Like {like}</button>
-            <button className='down' onClick={handleDislike}>Dislike {dislike}</button>
+            <div className='LD'>
+                <button className='up' onClick={handleLike}>Like {like}</button>
+                <button className='down' onClick={handleDislike}>Dislike {dislike}</button>
+            </div>
         </div>
         </div>
     )
