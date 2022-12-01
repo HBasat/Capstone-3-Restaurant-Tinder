@@ -41,9 +41,6 @@ export default function Linker({inviteeArray}){
                     { restaurant.restaurantTakeout && <p className='takeout'>Takeout Available</p> }
                     { restaurant.restaurantDelivery && <p className='delivery'>Delivery Available</p> }
                 </div>
-
-                // NEEDS OPEN/CLOSE FUNCTIONALITY //
-
                 { restaurant.restaurantTeleNumber && <p className='order-click'>Call to Order</p> }
 
                 

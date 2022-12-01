@@ -80,7 +80,7 @@ class Login extends Component {
                     <div className='logo-container'>
                         <div className='logo-overlay'>
                             <img className='logo-image'src={logo} alt='logo'/>
-                            <p className='logo-catchphrase'>words here</p>
+                            <p className='logo-catchphrase'>Where Food and Friends Meet!</p>
                         </div>
                     </div>
                 </div>

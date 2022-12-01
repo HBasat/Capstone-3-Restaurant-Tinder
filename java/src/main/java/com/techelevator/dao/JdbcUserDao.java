@@ -62,6 +62,28 @@ public class JdbcUserDao implements UserDao {
         throw new UsernameNotFoundException("User " + username + " was not found.");
     }
 
+    // for axios get request. // checks if there is a user in the database with this email only.
+//    @Override
+    public boolean findUsername(String username) {
+        User user = null;
+        String sql = "SELECT username FROM users WHERE username = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
+        if(results.next()){
+            return true;
+        }
+        return false;
+
+        /*
+        for (User user : this.findAll()) {
+            if( user.getUsername().toLowerCase().equals(username.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+        */
+
+    }
+
     @Override
     public boolean create(String username, String password, String role) {
         boolean userCreated = false;

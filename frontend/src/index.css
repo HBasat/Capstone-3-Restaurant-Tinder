@@ -134,6 +134,10 @@ input{
   padding: 133px 70px;
 }
 
+.logo-image{
+  margin-left: 30px;
+}
+
 
 
 /* Enter Zipcode/Invite Guests Pages */
@@ -177,6 +181,15 @@ input{
   text-transform: uppercase;
   width: 200px;
   margin: auto;
+}
+
+.up{
+  margin-top: -20px;
+  
+}
+
+.down{
+  
 }
 
 .swap-functions{

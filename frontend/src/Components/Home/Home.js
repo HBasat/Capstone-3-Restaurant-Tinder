@@ -90,8 +90,6 @@ function Home(props) {
                     { restaurant.restaurantTakeout && <p className='takeout'>Takeout Available</p> }
                     { restaurant.restaurantDelivery && <p className='delivery'>Delivery Available</p> }
                 </div>
-
-
                 <div className="operation">
                 {Array.isArray(restSchedule.data) && 
                     restSchedule.data
@@ -145,13 +143,6 @@ function Home(props) {
                             onChange={handleDate}
                         />}
                         {isClicked && <button className='done-button'><Link style={{color:'#FFFFFF'}} inviteeArray={inviteeArray} to="./Linker">Done</Link></button>}
-                        {!isClicked && <button
-                            type='submit'
-                            value="Submit"
-                            className='zip-button'
-                        >
-                            Submit
-                        </button>}
                     </form>  
 
 

@@ -63,6 +63,12 @@ public class AuthenticationController {
         }
     }
 
+    // for axios get request. forwards result from findUsername function in JdbcUserDao.
+    @RequestMapping(path = "/verify/{username}", method = RequestMethod.GET)
+    public boolean isValid(@PathVariable String username){
+        return userDao.findUsername(username);
+    }
+
     /**
      * Object to return as body in JWT Authentication.
      */

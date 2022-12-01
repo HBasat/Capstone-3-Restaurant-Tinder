@@ -5,7 +5,6 @@ import axios from 'axios'
 import Home from './Home'
 import RestaurantData from './RestaurantData'
 import { useEffect } from 'react';
-import { format } from 'date-fns'
 
 
 export default function Invite(props) {
@@ -61,49 +60,11 @@ export default function Invite(props) {
     console.log(date)
     console.log(tokenValid)
 
-    // const weekday = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
-
-    // function formatDate(newDate) {
-    //     const months = {
-    //       0: 'January',
-    //       1: 'February',
-    //       2: 'March',
-    //       3: 'April',
-    //       4: 'May',
-    //       5: 'June',
-    //       6: 'July',
-    //       7: 'August',
-    //       8: 'September',
-    //       9: 'October',
-    //       10: 'November',
-    //       11: 'December',
-    //     }
-    //     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-    //     const d = newDate
-    //     const year = d.getFullYear()
-    //     const date = d.getDate()
-    //     const monthIndex = d.getMonth()
-    //     const monthName = months[d.getMonth()]
-    //     const dayName = days[d.getDay()] // Thu
-    //     const formatted = `${dayName}, ${date} ${monthName} ${year}`
-    //     return formatted.toString()
-    //   }
-
         let today = new Date()
         let todaysDate = today.getFullYear() + '-' + parseInt(today.getMonth() + 1) + '-' + today.getDate()
         console.log(todaysDate)
         const resDate = Array.isArray(date.data) && date.data.expirationDate
         console.log(resDate)
-
-        // function handleValidation(){
-        //         if((tokenValid === true) && (resDate >= todaysDate)){
-        //              return <div className="restaurant-list">{restaurantMatches}</div>
-        //         } else if (tokenValid === false) {
-        //              return <div>{tokenInvalid}</div>
-        //         } else if(date < todaysDate) {
-        //             return <div>{dateExpired}</div>
-        //         }  
-        // }
 
         var display;
             if ((tokenValid === true) && (date.data.expirationDate >= todaysDate)) {

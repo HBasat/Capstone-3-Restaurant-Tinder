@@ -77,10 +77,6 @@ export default function RestaurantData(props){
                 { props.restaurant.restaurantDelivery && <p className='delivery'>Delivery Available</p> }
             </div>
 
-            
-            
-            // NEEDS OPEN/CLOSE FUNCTIONALITY //
-
             { props.restaurant.restaurantTeleNumber && <p className='order-click'>Call to Order</p> }
 
             <button className='up' onClick={handleLike}>Like {like}</button>

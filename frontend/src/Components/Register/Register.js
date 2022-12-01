@@ -54,6 +54,27 @@ class Register extends Component{
           emailError = "Email is invalid.";
         }
 
+        // checks if there is a user in the database with this email only. 
+        // if it returns FALSE, there is NOT an existing user and a new account CAN be registered.
+        // if it returns TRUE, there IS an existing user and a new account CANNOT be registered.
+
+        // no ! ........ register error. this is with sql statement
+        // with ! ...... no register error, lets you keep making with same credientials. this is with sql statement
+
+        // no ! ........ register error. this is WITHOUT sql statement (other method)
+        // with ! ...... no register error, lets you keep making with same credientials. this is WITHOUT sql statement (other method)
+        /*
+
+        axios.get(`http://localhost:8081/verify/${username}`)
+        .then(resp => {
+            if(resp.data) emailError = "This email has already been registered.";
+        });
+        
+        if((axios.get(`http://localhost:8081/verify/${username}`))){
+            emailError = "This email has already been registered.";
+        } 
+        */ 
+
 
         if(this.state.password.length <= 7){
             passwordError = "Password must be minimum 8 characters.";
@@ -136,7 +157,7 @@ class Register extends Component{
             <div className='logo-container2'>
                 <div className='logo-overlay'>
                     <img className='logo-image'src={logo} alt='logo'/>
-                    <p className='logo-catchphrase'>words here</p>
+                    <p className='logo-catchphrase'>Where Food and Friends Meet!</p>
                 </div>
             </div>
         </div>
